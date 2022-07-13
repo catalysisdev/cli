@@ -15,7 +15,10 @@ env:
 
 jobs:
   build:
-    name: Build
+    strategy:
+      matrix:
+        target: ['aarch64-apple-darwin', 'x86_64-apple-darwin']
+    name: Build for ${{ matrix.target }}
     runs-on: 'ubuntu-latest'
     timeout-minutes: 15
     steps:
@@ -30,7 +33,7 @@ jobs:
         with:
           use-cross: true
           command: build
-          args: --release --all-features
+          args: --release --all-features --target ${{ matrix.target }}
   test:
     name: Test
     runs-on: 'ubuntu-latest'
