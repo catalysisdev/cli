@@ -1,5 +1,7 @@
 # cli
 
+[![cli](https://github.com/catalysisdev/cli/actions/workflows/cli.yml/badge.svg)](https://github.com/catalysisdev/cli/actions/workflows/cli.yml)
+
 This repository contains a Catalysis' CLI implemented in [Rust](https://www.rust-lang.org/).
 
 ## Development
