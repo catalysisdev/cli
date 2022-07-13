@@ -15,22 +15,11 @@ env:
 
 jobs:
   build:
+    name: Build in ${{ matrix.platform }}
     strategy:
       matrix:
-        # Tier 1 host tools: https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1-with-host-tools
-        target: [
-          'aarch64-apple-darwin', 
-          'x86_64-apple-darwin', 
-          'aarch64-unknown-linux-gnu', 
-          'i686-pc-windows-gnu',
-          'i686-pc-windows-msvc',
-          'i686-unknown-linux-gnu',
-          'x86_64-pc-windows-gnu',
-          'x86_64-pc-windows-msvc',
-          'x86_64-unknown-linux-gnu'
-        ]
-    name: Build for ${{ matrix.target }}
-    runs-on: 'ubuntu-latest'
+        platform: ['ubuntu-latest', 'macos-latest', 'windows-latest']
+    runs-on: ${{ matrix.platform }}
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v3
@@ -40,16 +29,17 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-          target: ${{ matrix.target }}
           override: true
       - uses: actions-rs/cargo@v1
         with:
-          use-cross: true
           command: build
-          args: --release --all-features --target ${{ matrix.target }}
+          args: --release --all-features
   test:
-    name: Test
-    runs-on: 'ubuntu-latest'
+    name: Test in ${{ matrix.platform }}
+    strategy:
+      matrix:
+        platform: ['ubuntu-latest', 'macos-latest', 'windows-latest']
+    runs-on: ${{ matrix.platform }}
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v3
