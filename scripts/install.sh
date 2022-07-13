@@ -11,7 +11,6 @@ Usage:
 
 Options:
     -h, --help      Display this message
-    --git SLUG      Get the crate from "https://github/$SLUG"
     -f, --force     Force overwriting an existing binary
     --crate NAME    Name of the crate to install (default <repository name>)
     --tag TAG       Tag (version) of the crate to install (default <latest release>)
@@ -43,6 +42,7 @@ need() {
     fi
 }
 
+git="catalysisdev/cli"
 force=false
 while test $# -gt 0; do
     case $1 in
@@ -52,10 +52,6 @@ while test $# -gt 0; do
             ;;
         --force | -f)
             force=true
-            ;;
-        --git)
-            git=$2
-            shift
             ;;
         --help | -h)
             help
