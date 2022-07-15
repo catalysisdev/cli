@@ -1,8 +1,12 @@
 use clap::Parser;
+use clap::crate_version;
 
 #[derive(Parser, Debug)]
-#[clap(author, version, about, long_about = None)]
-struct Args {
+#[clap(name = "catalysis")]
+#[clap(version = crate_version!())]
+#[clap(about = "A CLI tool to deploy projects through a Catalysis instance", long_about = None)]
+#[clap(propagate_version = true)]
+struct Cli {
     /// Name of the person to greet
     #[clap(short, long, value_parser)]
     name: String,
@@ -14,7 +18,7 @@ struct Args {
 
 
 pub fn run() {
-    let args = Args::parse();
+    let args = Cli::parse();
     for _ in 0..args.count {
         println!("Hello {}!", args.name)
     }

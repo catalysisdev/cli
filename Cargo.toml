@@ -2,9 +2,10 @@
 name = "catalysis"
 version = "0.1.0"
 edition = "2021"
+author = "yooo"
 
 [dependencies]
 
 [dependencies.clap]
 version = "^3.2.12"
-features = ["derive"]
+features = ["derive", "cargo"]
