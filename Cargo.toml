@@ -2,10 +2,10 @@
 name = "catalysis"
 version = "0.1.0"
 edition = "2021"
-author = "yooo"
+author = "pedro@catalysis.dev"
 
 [dependencies]
-
-[dependencies.clap]
-version = "^3.2.12"
-features = ["derive", "cargo"]
+keyring = "^1.2"
+serde_json = { version = "^1.0.82" }
+serde = { version = "1.0.139", features = ["derive"] }
+clap = {version = "^3.2.12", features = ["derive", "cargo"]}
