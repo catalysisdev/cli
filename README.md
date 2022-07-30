@@ -4,7 +4,7 @@
 
 This repository contains a Catalysis' CLI implemented in [Rust](https://www.rust-lang.org/).
 
-## Install
+## Installation
 
 Run the following script in your system:
 
@@ -22,3 +22,6 @@ curl -LSfs https://raw.githubusercontent.com/catalysisdev/cli/main/scripts/insta
 ### Requirements
 - [Rust](https://www.rust-lang.org/)
 - [Cargo](https://doc.rust-lang.org/cargo/)
+
+### Docs
+If you are considering contributing to the project, we recommend checking out the documentation for [CLI contributors](/docs) and [Catalysis contributors](https://catalysis.dev/).
